@@ -1,0 +1,6 @@
+ID Produit,Nom,Description,Prix,Quantité,ID Catégorie
+1,Brosse à dent,Sert à se brosser les dents,4,100,Soin et beauté
+2,Rasoir,Sert à se rasser les poils,25,50,Soin et beauté
+3,Ballon,Pour jouer au foot,12,80,Jeux
+4,Raquette tennis,Superbe raquette de tennis,40,200,Jeux
+9,Drone,Drone FPS,850,10,Jeux
