@@ -1,5 +1,6 @@
 import mysql.connector
 import tkinter as tk
+import configparser
 from tkinter import ttk
 from tkinter.simpledialog import askinteger
 from tkinter.filedialog import asksaveasfilename
@@ -339,17 +340,24 @@ class StockGUI:
 
     
 
-host = "localhost"
-user = "root"
-password = "Ultrasmars1379!"
-database = "store"
+def read_db_config(filename='..\config\config.ini', section='database'):
+    # Lecture de la configuration à partir du fichier config.ini
+    parser = configparser.ConfigParser()
+    parser.read(filename)
+    db_config = {}
+    if parser.has_section(section):
+        params = parser.items(section)
+        for param in params:
+            db_config[param[0]] = param[1]
+    else:
+        raise Exception(f"Section '{section}' non trouvée dans le fichier '{filename}'")
+    return db_config
 
-mydb = mysql.connector.connect(
-    host = host,
-    user = user,
-    password = password,
-    database = database
-)
+config = read_db_config()
+host = config['host']
+user = config['user']
+password = config['password']
+database = config['database']
 
 gerer_produit = Product(host, user, password, database)
 
